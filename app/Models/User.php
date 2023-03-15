@@ -23,10 +23,15 @@ class User extends Authenticatable
         'password',
     ];
     
+    // public function contents()
+    // {
+    //     return $this->hasMany(Content::class);
+    // } 
+    
     public function contents()
     {
-        return $this->hasMany(Content::class);
-    } 
+    return $this->belongsToMany(Content::class)->withTimestamps();
+    }
 
     /**
      * The attributes that should be hidden for serialization.

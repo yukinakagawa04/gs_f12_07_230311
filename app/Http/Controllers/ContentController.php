@@ -42,6 +42,8 @@ class ContentController extends Controller
     {
         //送る内容を再度定義する
         $content = new Content();
+                //idの
+                $content -> user_id = Auth ::user() -> id;
                 //title_contentの
                 $content -> title_content = request() -> title_content;
                 //image_contentの
@@ -93,7 +95,8 @@ class ContentController extends Controller
      */
     public function show($id)
     {
-        //
+        $content = Content::find($id);
+        return response()->view('content.show', compact('content'));
     }
 
     /**
@@ -136,7 +139,7 @@ class ContentController extends Controller
     // Userモデルに定義したリレーションを使用してデータを取得する．
     $contents = User::query()
       ->find(Auth::user()->id)
-      ->userContents()
+      ->contents()
       ->orderBy('created_at','desc')
       ->get();
     return response()->view('content.index', compact('contents'));

@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TweetController;
 use App\Http\Controllers\PartnerController;
 use App\Http\Controllers\ContentController;
+use App\Http\Controllers\FavoriteController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -18,8 +20,11 @@ use App\Http\Controllers\ContentController;
 */
 
 Route::middleware('auth')->group(function () {
-  Route::get('/content/mypage', [ContentController::class, 'mydata'])->name('content.mypage');
-  Route::resource('content', ContentController::class);
+    // いいねの機能
+    Route::post('content/{content}/favorites', [FavoriteController::class, 'store'])->name('favorites');
+    Route::post('content/{content}/unfavorites', [FavoriteController::class, 'destroy'])->name('unfavorites');
+    Route::get('/content/mypage', [ContentController::class, 'mydata'])->name('content.mypage');
+    Route::resource('content', ContentController::class);
 });
 
 Route::resource('tweet', TweetController::class);
