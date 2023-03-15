@@ -18,14 +18,20 @@
         </div>
         <!-- 🔽 一覧ページへのリンクを追加 -->
         <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-          <x-nav-link :href="route('tweet.index')" :active="request()->routeIs('tweet.index')">
+          <x-nav-link :href="route('content.index')" :active="request()->routeIs('content.index')">
             {{ __('Index') }}
           </x-nav-link>
         </div>
         <!-- 🔽 作成ページへのリンクを追加 -->
         <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-          <x-nav-link :href="route('tweet.create')" :active="request()->routeIs('tweet.create')">
+          <x-nav-link :href="route('content.create')" :active="request()->routeIs('content.create')">
             {{ __('Create') }}
+          </x-nav-link>
+        </div>
+        <!-- 🔽 マイページへのリンクを追加 -->
+        <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+          <x-nav-link :href="route('content.mypage')" :active="request()->routeIs('content.mypage')">
+            {{ __('Mypage') }}
           </x-nav-link>
         </div>
 
@@ -56,7 +62,7 @@
               @csrf
 
               <x-dropdown-link :href="route('logout')" onclick="event.preventDefault();
-                                                this.closest('form').submit();">
+                this.closest('form').submit();">
                 {{ __('Log Out') }}
               </x-dropdown-link>
             </form>
@@ -85,16 +91,22 @@
     </div>
     <!-- 🔽 一覧ページへのリンクを追加 -->
     <div class="pt-2 pb-3 space-y-1">
-      <x-responsive-nav-link :href="route('tweet.index')" :active="request()->routeIs('tweet.index')">
+      <x-responsive-nav-link :href="route('content.index')" :active="request()->routeIs('content.index')">
         {{ __('Index') }}
       </x-responsive-nav-link>
     </div>
     <!-- 🔽 作成ページへのリンクを追加 -->
     <div class="pt-2 pb-3 space-y-1">
-      <x-responsive-nav-link :href="route('tweet.create')" :active="request()->routeIs('tweet.create')">
+      <x-responsive-nav-link :href="route('content.create')" :active="request()->routeIs('content.create')">
         {{ __('Create') }}
       </x-responsive-nav-link>
     </div>
+    <!-- 🔽 マイページへのリンクを追加 -->
+        <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+          <x-nav-link :href="route('content.mypage')" :active="request()->routeIs('content.mypage')">
+            {{ __('Mypage') }}
+          </x-nav-link>
+        </div>
 
     <!-- Responsive Settings Options -->
     <div class="pt-4 pb-1 border-t border-gray-200 dark:border-gray-600">
@@ -113,7 +125,7 @@
           @csrf
 
           <x-responsive-nav-link :href="route('logout')" onclick="event.preventDefault();
-                                        this.closest('form').submit();">
+            this.closest('form').submit();">
             {{ __('Log Out') }}
           </x-responsive-nav-link>
         </form>

@@ -25,7 +25,13 @@
         <!-- 🔽 作成ページへのリンクを追加 -->
         <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
           <x-nav-link :href="route('tweet.create')" :active="request()->routeIs('tweet.create')">
-            {{ __('Create') }}
+            {{ __('コンテンツ作成') }}
+          </x-nav-link>
+        </div>
+        <!-- 🔽 パートナー作成ページへのリンクを追加 -->
+        <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+          <x-nav-link :href="route('partner.create')" :active="request()->routeIs('partner.create')">
+            {{ __('パートナーアカウント作成') }}
           </x-nav-link>
         </div>
 

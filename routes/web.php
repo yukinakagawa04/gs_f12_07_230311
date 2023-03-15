@@ -3,7 +3,8 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TweetController;
-
+use App\Http\Controllers\PartnerController;
+use App\Http\Controllers\ContentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,7 +16,16 @@ use App\Http\Controllers\TweetController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
+Route::middleware('auth')->group(function () {
+  Route::get('/content/mypage', [ContentController::class, 'mydata'])->name('content.mypage');
+  Route::resource('content', ContentController::class);
+});
+
 Route::resource('tweet', TweetController::class);
+
+Route::resource('partner', PartnerController::class);
+Route::resource('content', ContentController::class);
 
 Route::get('/', function () {
     return view('welcome');
@@ -24,6 +34,8 @@ Route::get('/', function () {
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
+
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
