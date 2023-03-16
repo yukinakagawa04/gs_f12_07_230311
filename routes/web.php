@@ -6,6 +6,7 @@ use App\Http\Controllers\TweetController;
 use App\Http\Controllers\PartnerController;
 use App\Http\Controllers\ContentController;
 use App\Http\Controllers\FavoriteController;
+use App\Http\Controllers\CommentController;
 
 
 /*
@@ -28,9 +29,10 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::resource('tweet', TweetController::class);
-
 Route::resource('partner', PartnerController::class);
 Route::resource('content', ContentController::class);
+Route::resource('comment', CommentController::class);
+
 
 Route::get('/', function () {
     return view('welcome');

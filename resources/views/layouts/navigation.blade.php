@@ -13,25 +13,25 @@
         <!-- Navigation Links -->
         <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
           <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-            {{ __('Dashboard') }}
+            {{ __('（仮）ログインOK！') }}
           </x-nav-link>
         </div>
         <!-- 🔽 一覧ページへのリンクを追加 -->
         <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
           <x-nav-link :href="route('content.index')" :active="request()->routeIs('content.index')">
-            {{ __('Index') }}
+            {{ __('コンテンツ一覧') }}
           </x-nav-link>
         </div>
         <!-- 🔽 作成ページへのリンクを追加 -->
         <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
           <x-nav-link :href="route('content.create')" :active="request()->routeIs('content.create')">
-            {{ __('Create') }}
+            {{ __('コンテンツを作成する') }}
           </x-nav-link>
         </div>
         <!-- 🔽 マイページへのリンクを追加 -->
         <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
           <x-nav-link :href="route('content.mypage')" :active="request()->routeIs('content.mypage')">
-            {{ __('Mypage') }}
+            {{ __('あなたのコンテンツ') }}
           </x-nav-link>
         </div>
 
@@ -54,7 +54,7 @@
 
           <x-slot name="content">
             <x-dropdown-link :href="route('profile.edit')">
-              {{ __('Profile') }}
+              {{ __('プロフィール') }}
             </x-dropdown-link>
 
             <!-- Authentication -->
@@ -63,7 +63,7 @@
 
               <x-dropdown-link :href="route('logout')" onclick="event.preventDefault();
                 this.closest('form').submit();">
-                {{ __('Log Out') }}
+                {{ __('ログアウト') }}
               </x-dropdown-link>
             </form>
           </x-slot>
@@ -86,25 +86,25 @@
   <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
     <div class="pt-2 pb-3 space-y-1">
       <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-        {{ __('Dashboard') }}
+        {{ __('（仮）ログインOK！') }}
       </x-responsive-nav-link>
     </div>
     <!-- 🔽 一覧ページへのリンクを追加 -->
     <div class="pt-2 pb-3 space-y-1">
       <x-responsive-nav-link :href="route('content.index')" :active="request()->routeIs('content.index')">
-        {{ __('Index') }}
+        {{ __('コンテンツ一覧') }}
       </x-responsive-nav-link>
     </div>
     <!-- 🔽 作成ページへのリンクを追加 -->
     <div class="pt-2 pb-3 space-y-1">
       <x-responsive-nav-link :href="route('content.create')" :active="request()->routeIs('content.create')">
-        {{ __('Create') }}
+        {{ __('コンテンツを作成する') }}
       </x-responsive-nav-link>
     </div>
     <!-- 🔽 マイページへのリンクを追加 -->
         <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
           <x-nav-link :href="route('content.mypage')" :active="request()->routeIs('content.mypage')">
-            {{ __('Mypage') }}
+            {{ __('あなたのコンテンツ') }}
           </x-nav-link>
         </div>
 
