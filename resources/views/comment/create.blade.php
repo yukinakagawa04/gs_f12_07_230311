@@ -1,4 +1,4 @@
-          
+<x-app-layout>          
     <div class="p-6 bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-800 ">
         <form class="mb-6" action="{{ route('comment.store') }}" method="POST">
             @csrf
@@ -14,3 +14,4 @@
             </div>
         </form>
     </div>
+</x-app-layout>

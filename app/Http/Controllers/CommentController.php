@@ -17,7 +17,7 @@ class CommentController extends Controller
     public function index()
     {
         $comments = Comment::getAllOrderByUpdated_at();
-        return response()->view('content.components.index',compact('comments'));
+        return response()->view('comment.index',compact('comments'));
     }
 
     /**
@@ -27,7 +27,7 @@ class CommentController extends Controller
      */
     public function create()
     {
-        return response()->view('content.comments.create');
+        return response()->view('comment.create');
     }
 
     /**
@@ -38,28 +38,21 @@ class CommentController extends Controller
      */
     public function store(Request $request)
     {
-        
         $validator = Validator::make($request->all(), [
             'comment' => 'required|max:191',
         ]);
-        
         if ($validator->fails()) {
             return redirect()
-                ->route('content.components.create')
+                ->route('commnet.create')
                 ->withErrors($validator)
                 ->withInput();
         }
-        
-        $comment = new Comment();
-        $comment->user_id = Auth::user()->id;
-        $comment->comment = $request->comment;
-        $comment->save();
-        
-        // return response()->view('content.show',compact('comments'));
         // 戻り値は挿入されたレコードの情報
+        $data = $request->merge(['user_id' => Auth::user()->id])->all();
         $result = Comment::create($request->all());
         // ルーティング「tweet.index」にリクエスト送信（一覧ページに移動）
-        return redirect()->route('content.components.index');
+        return redirect()->route('comment.index');
+
     }
 
     /**

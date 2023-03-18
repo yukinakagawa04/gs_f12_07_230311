@@ -49,9 +49,9 @@
               </x-primary-button>
             </a>
             <!--コメント入力-->
-            @include('content.components.create')
+
             <!--コメント表示-->
-            @include('content.components.index')
+
             
             </div>
           </div>
