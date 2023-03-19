@@ -19,7 +19,7 @@ class ContentController extends Controller
     public function index()
     {
         $contents = Content::getAllOrderByUpdated_at();
-        return response()->view('content.index',compact('contents'));
+        return response()->view('components.content-view',compact('contents'));
     }
 
     /**
@@ -84,7 +84,7 @@ class ContentController extends Controller
         // 戻り値は挿入されたレコードの情報
         $result = Content::create($data);
         // ルーティング「partner.index」にリクエスト送信（一覧ページに移動）
-        return redirect()->route("content.index");
+        return redirect()->route("content.index" );
     }
 
     /**

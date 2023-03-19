@@ -14,16 +14,14 @@
                 
                 <div class="text-center">
                 <p>新着順</p>
-                <!--新着の投稿を3つアップする-->
-                
-                    <a href="route('content.index')" :active="request()->routeIs('content.index')">
-                        {{ __('もっと見る') }}
-                    </a>
+                <!--新着の投稿をアップする-->
+                @include('components/content-view')
+                <a href="content">{{ __('もっと見る') }}</a>
                 </div>
                 <div class="text-center">
                 <p>おすすめアカウント</p>
                 <!--おすすめアカウントを1つアップする-->
-                    <a href="route('partner.index')" :active="request()->routeIs('partner.index')">
+                    <a href="partner">
                         {{ __('もっと見る') }}
                     </a>
                 </div>
