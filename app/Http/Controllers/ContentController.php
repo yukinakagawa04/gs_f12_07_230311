@@ -19,9 +19,10 @@ class ContentController extends Controller
     public function index()
     {
         $contents = Content::getAllOrderByUpdated_at();
-        return response()->view('components.content-view',compact('contents'));
+        return response()->view('content.index',compact('contents'));
+        dd($contents);
     }
-
+    
     /**
      * Show the form for creating a new resource.
      *

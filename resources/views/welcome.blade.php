@@ -33,7 +33,7 @@
 
             <div class="max-w-7xl mx-auto p-6 lg:p-8"  bg-white-100>
                 <div class="sm:flex sm:justify-center">
-                    <h2 class="font-semibold text-black-600  focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">生き物の日常を飼育員の声で届ける音声配信サービス</h2>
+                    <h2 class="font-semibold text-gray-600  dark:text-gray-400  focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">生き物の日常を飼育員の声で届ける音声配信サービス</h2>
                     <br>
                     <br>
                 </div>

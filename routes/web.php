@@ -26,8 +26,7 @@ Route::middleware('auth')->group(function () {
     Route::post('content/{content}/favorites', [FavoriteController::class, 'store'])->name('favorites');
     Route::post('content/{content}/unfavorites', [FavoriteController::class, 'destroy'])->name('unfavorites');
     Route::get('/content/mypage', [ContentController::class, 'mydata'])->name('content.mypage');
-    Route::get('content-view', [ContentController::class, 'index'])->name('content-view');
-    Route::get('/dashboard', [ContentController::class, 'index'])->name('dashboard');
+    Route::resource('content', ContentController::class);
 });
 
 Route::resource('tweet', TweetController::class);
@@ -41,9 +40,9 @@ Route::get('/', function () {
 });
 
 
-// Route::get('/dashboard', function () {
-//     return view('dashboard');
-// })->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
 
 
 
