@@ -39,6 +39,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/service', function () {
+    return view('service');
+});
 
 Route::get('/dashboard', function () {
     return view('dashboard');

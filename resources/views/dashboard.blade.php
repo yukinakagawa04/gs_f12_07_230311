@@ -29,7 +29,7 @@
             </div>
         </div>
         <div>
-            <img src="{{ asset('images/banner01.png') }}" alt="" class="mx-auto">
+            <a href=resources/views/service.blade.php><img src="{{ asset('images/banner01.png') }}" alt="" class="mx-auto"></a>
         </div>
     </div>
     
