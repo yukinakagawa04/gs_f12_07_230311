@@ -30,6 +30,4 @@ class Content extends Model
     {
     return $this->belongsToMany(User::class)->withTimestamps();
     }
-    
-    
 }

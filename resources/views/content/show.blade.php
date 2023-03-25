@@ -7,16 +7,16 @@
 
   <div class="py-12">
     <div class="max-w-7xl mx-auto sm:w-8/12 md:w-1/2 lg:w-5/12">
-      <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-        <div class="p-6 bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-800">
+      <div class="bg-white d overflow-hidden shadow-sm sm:rounded-lg">
+        <div class="p-6 bg-white  border-b border-gray-200 ">
           <div class="mb-6">
             <div class="flex flex-col mb-4">
-                <!--タイトル-->
-                <p class="mb-2 uppercase font-bold text-lg text-gray-800 dark:text-gray-200" id="title_content">{{$content->title_content}}</p>
                 <!--画像-->
                     <img src="{{ asset('storage/contents/images/'.$content->image_content)}}"　class="mx-auto" >
                 <!--音声ファイル-->
                     <audio controls src="{{ asset('storage/contents/audios/'.$content->audio)}}"></audio>
+                <!--タイトル-->
+                <p class="mb-2 uppercase font-bold text-lg text-gray-800 " id="title_content">{{$content->title_content}}</p>
             </div>
             <!-- favorite 状態で条件分岐 -->
                       @if($content->users()->where('user_id', Auth::id())->exists())
@@ -42,18 +42,42 @@
                         </x-primary-button>
                       </form>
                       @endif
-            <div class="flex items-center justify-end mt-4">
+            <!--コメント入力-->
+            <div class="p-6 bg-white  border-b border-gray-200 ">
+              <form class="mb-6" action={{route('comment.store', auth() ->user()->id, $content)}} method="POST" class="mt-8">
+                  @csrf
+                  <div class="mb-4">
+                    <x-input-label for="comment" :value="__('コメント')" />
+                      <x-text-input id="comment" class="block mt-1 w-full" type="text" name="comment" :value="old('comment')" required autofocus />
+                      <x-input-error :messages="$errors->get('comment')" class="mt-2" />
+                  </div>
+                  <div class="flex items-center justify-end mt-4">
+                      <x-primary-button class="ml-3">
+                        {{ __('コメント') }}
+                      </x-primary-button>
+                  </div>
+              </form>
+            </div>
+             
+            <!--コメント表示-->
+            @foreach ($comments as $comment)
+              <tr class="hover:bg-gray-lighter">
+                <td class="py-4 px-6 border-b border-gray-light dark:border-gray-600">
+                  <h3 class="text-left font-bold text-lg text-gray-dark dark:text-gray-200">{{$comment->comment}}</h3>
+                  <div class="flex">
+                    <!-- 更新ボタン -->
+                    <!-- 削除ボタン -->
+                  </div>
+                </td>
+              </tr>
+              @endforeach
+            
+            </div>
             <a href="{{ url()->previous() }}">
               <x-secondary-button class="ml-3">
                 {{ __('Back') }}
               </x-primary-button>
             </a>
-            <!--コメント入力-->
-
-            <!--コメント表示-->
-
-            
-            </div>
           </div>
         </div>
       </div>

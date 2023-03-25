@@ -27,12 +27,13 @@ Route::middleware('auth')->group(function () {
     Route::post('content/{content}/unfavorites', [FavoriteController::class, 'destroy'])->name('unfavorites');
     Route::get('/content/mypage', [ContentController::class, 'mydata'])->name('content.mypage');
     Route::resource('content', ContentController::class);
+    Route::post('/comments/{commnet}/comments', [CommentController::class, 'store'])->name('comment.store');
 });
 
 Route::resource('tweet', TweetController::class);
 Route::resource('partner', PartnerController::class);
 Route::resource('content', ContentController::class);
-Route::resource('comment', CommentController::class);
+
 
 
 Route::get('/', function () {

@@ -16,9 +16,9 @@ class UserComposer
     public function compose(View $view)
     {
          
-         $view->with([
-             'contents'=> $contents,
-         ]);
+        //  $view->with([
+        //      'contents'=> $contents,
+        //  ]);
         
     }
 
