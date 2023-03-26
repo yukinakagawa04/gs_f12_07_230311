@@ -60,18 +60,18 @@
             </div>
              
             <!--コメント表示-->
-            @foreach ($comments as $comment)
+            @forelse ($comments as $comment)
               <tr class="hover:bg-gray-lighter">
                 <td class="py-4 px-6 border-b border-gray-light dark:border-gray-600">
-                  <h3 class="text-left font-bold text-lg text-gray-dark dark:text-gray-200">{{$comment->comment}}</h3>
+                  <p class="text-left font-bold text-lg text-gray-dark dark:text-gray-200">{{$comment->comment}}</p>
                   <div class="flex">
-                    <!-- 更新ボタン -->
-                    <!-- 削除ボタン -->
                   </div>
                 </td>
               </tr>
-              @endforeach
-            
+            @empty
+              <p>コメントはありません。</p>
+            @endforelse
+
             </div>
             <a href="{{ url()->previous() }}">
               <x-secondary-button class="ml-3">

@@ -20,7 +20,6 @@ class ContentController extends Controller
     {
         $contents = Content::getAllOrderByUpdated_at();
         return response()->view('content.index',compact('contents'));
-        dd($contents);
     }
     
     /**

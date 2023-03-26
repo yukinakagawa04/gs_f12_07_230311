@@ -22,7 +22,7 @@
           {{ __('コンテンツ一覧') }}
           </x-responsive-nav-link>
         </div>
-        </div>
+
         <!-- 🔽 作成ページへのリンクを追加 -->
         <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
           <x-nav-link :href="route('content.create')" :active="request()->routeIs('content.create')">
@@ -105,6 +105,10 @@
 
     <!-- Responsive Settings Options -->
     <div class="pt-4 pb-1 border-t border-gray-200 ">
+      <!--🔽 contact-->
+      <div>
+        <a href="/contact"><p class="mx-auto">【飼育員の方へ】<br>チャンネル開設のお申し込み</a>
+      </div>
       <div class="px-4">
         <div class="font-medium text-base text-gray-800 ">{{ Auth::user()->name }}</div>
         <div class="font-medium text-sm text-gray-500">{{ Auth::user()->email }}</div>

@@ -11,23 +11,13 @@ use Laravel\Sanctum\HasApiTokens;
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
-
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
-     */
+    
     protected $fillable = [
         'name',
         'email',
         'password',
     ];
-    
-    // public function contents()
-    // {
-    //     return $this->hasMany(Content::class);
-    // } 
-    
+ 
     public function contents()
     {
     return $this->belongsToMany(Content::class)->withTimestamps();
@@ -41,11 +31,17 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    // ユーザーとコンテンツの間に「多対多」がある：いいね機能
+    public function content()
+        {
+        return $this->belongsToMany(Content::class)->withTimestamps();
+        }
+
+    // ユーザーとコンテンツとの間に「1対多」がある
+    public function userContents()
+        {
+        return $this->hasMany(Content::class);
+        }
     
-    public function comments()
-    {
-        return $this->belongsToMany(Comment::class)->withTimestamps();
-    }
-
-
 }

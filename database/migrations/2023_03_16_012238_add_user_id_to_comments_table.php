@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::table('comments', function (Blueprint $table) {
             $table->foreignId('user_id')->after('id')->nullable()->constrained()->cascadeOnDelete();
+            $table->foreignId('content_id')->after('id')->nullable()->constrained()->cascadeOnDelete();
         });
     }
 
@@ -28,6 +29,8 @@ return new class extends Migration
         Schema::table('comments', function (Blueprint $table) {
             $table->dropForeign(['user_id']);
             $table->dropColumn(['user_id']);
+            $table->dropForeign(['content_id']);
+            $table->dropColumn(['content_id']);
         });
     }
 };
