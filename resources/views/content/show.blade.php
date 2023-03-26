@@ -60,17 +60,13 @@
             </div>
              
             <!--コメント表示-->
-            @forelse ($comments as $comment)
-              <tr class="hover:bg-gray-lighter">
-                <td class="py-4 px-6 border-b border-gray-light dark:border-gray-600">
-                  <p class="text-left font-bold text-lg text-gray-dark dark:text-gray-200">{{$comment->comment}}</p>
-                  <div class="flex">
-                  </div>
-                </td>
-              </tr>
-            @empty
-              <p>コメントはありません。</p>
-            @endforelse
+            @if (session('comments'))
+                @foreach (session('comments') as $comment)
+                    <p>{{ $comment->comment }}</p>
+                    <p>{{ $comment->created_at }}</p>
+                @endforeach
+            @endif
+            
 
             </div>
             <a href="{{ url()->previous() }}">

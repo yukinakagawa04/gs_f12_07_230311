@@ -7,7 +7,7 @@ use App\Http\Controllers\PartnerController;
 use App\Http\Controllers\ContentController;
 use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\CommentController;
-
+use App\Http\Controllers\Content;
 
 
 /*
@@ -27,7 +27,7 @@ Route::middleware('auth')->group(function () {
     Route::post('content/{content}/unfavorites', [FavoriteController::class, 'destroy'])->name('unfavorites');
     Route::get('/content/mypage', [ContentController::class, 'mydata'])->name('content.mypage');
     Route::resource('content', ContentController::class);
-    Route::post('/contents/{content}/comments', [CommentController::class, 'store'])->name('comment.store');
+    Route::post('content/{content_id}/comments', [CommentController::class, 'store'])->name('comment.store');
 });
 
 Route::resource('tweet', TweetController::class);

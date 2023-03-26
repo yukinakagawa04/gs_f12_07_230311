@@ -10,7 +10,7 @@ use Auth;
 
 class CommentController extends Controller
 {
-    public function store(Contnet $content, Request $request)
+    public function store(Request $request)
     {
         $user = auth()->user();
         $data = $request->all();
@@ -19,21 +19,21 @@ class CommentController extends Controller
             'comment' => 'required|max:191',
         ]);
         
-        $comment = new Comment();
-        $comment->comment = $request->input('comment');
-        $comment->user_id = Auth::user()->id;
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator);
+        }
         
-        $validator->validate();
+        $comment = new Comment();
+        $comment->comment = $data['comment'];
+        $comment->user_id = $user->id;
+        // $comment->content_id = $data['content_id'];
         $comment->save();
         
-        $comment->commentStore($user->id, $data);
+        // $comment->commentStore($user->id, $data);
+        
         $comments = Comment::getAllOrderByUpdated_at();
-        // return response()->view('content.show',compact('comments'));
-        //return response()->view('content.show',compact('comments'));
-        //return view('content.show',['comment' => $comments]);
-        // return response()->view('tweet.index',compact('tweets'));
-        //return view('content.show')->with('comments', $comments);
-        return redirect()->back();
+        
+        return redirect()->back()->with('comments', $comments);
     }
     
     
